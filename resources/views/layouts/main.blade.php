@@ -19,5 +19,7 @@
         @include('includes.footer')
     </footer>
     @stack('scripts')
+    <script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/theme.min.js"></script>
 </body>
 </html>
