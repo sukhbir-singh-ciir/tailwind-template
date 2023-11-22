@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<<<<<<< HEAD
-    <title>@yield("title","Admin title")</title>
-=======
-    <title>@yield("title","Default Admin")</title>
->>>>>>> 0e277b55cf4370b5e37d81bd31efa718f460f702
-    @stack('Styles')
-    @vite('resources/css/app.css')
+    <title>Admin Panel</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include your additional stylesheets if any -->
 </head>
-<body>
-<<<<<<< HEAD
-    <header>
-        @include("admin.includes.nav")
-    </header>
-    <aside>
-        @include("admin.includes.sidebar")
-    </aside>
-    <main>
-        @yield("Content")
-    </main>
-    <footer>
-        @include('admin.includes.footer')
-    </footer>
-=======
+<body class="font-sans bg-gray-100">
     <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
         @include("admin.includes.sidebar")
-        <!-- ===== Content Area Start ===== -->
-                @include("admin.includes.nav")
-            <main>
-                @yield("Content")
+
+        <!-- Content Area -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Navbar -->
+            @include("admin.includes.nav")
+
+            <!-- Main Content -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+                <!-- Page Title -->
+                <div class="bg-white py-4">
+                    <div class="container mx-auto">
+                        <h1 class="text-2xl font-semibold text-gray-800">@yield("pageTitle")</h1>
+                    </div>
+                </div>
+
+                <!-- Page Content -->
+                <div class="container mx-auto my-8">
+                    @yield("content")
+                </div>
             </main>
+        </div>
     </div>
->>>>>>> 0e277b55cf4370b5e37d81bd31efa718f460f702
+
+    <!-- Scripts -->
     @stack('scripts')
     <script src="/resources/js/jquery.min.js"></script>
     <script src="/resources/js/theme.min.js"></script>

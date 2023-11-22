@@ -29,20 +29,9 @@ Route::get('/blogs', function () {
     return view('blog');
 });
 
-<<<<<<< HEAD
-
-
-
-Route::prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    });
-});
-=======
 Route::group(["prefix"=>"admin"],function(){
     Route::get('/', function () {
         return view('admin.dashboard');
     });
 });
 
->>>>>>> 0e277b55cf4370b5e37d81bd31efa718f460f702
