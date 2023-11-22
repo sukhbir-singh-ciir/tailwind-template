@@ -29,3 +29,11 @@ Route::get('/blogs', function () {
     return view('blog');
 });
 
+
+
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    });
+});
