@@ -9,31 +9,53 @@
     <!-- Include your additional stylesheets if any -->
 </head>
 <body class="font-sans bg-gray-100">
-    <div class="flex h-screen overflow-hidden">
-        <!-- Sidebar -->
-        @include("admin.includes.sidebar")
-
-        <!-- Content Area -->
-        <div class="flex-1 flex flex-col overflow-hidden">
-            <!-- Navbar -->
-            @include("admin.includes.nav")
-
-            <!-- Main Content -->
-            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-                <!-- Page Title -->
-                <div class="bg-white py-4">
-                    <div class="container mx-auto">
-                        <h1 class="text-2xl font-semibold text-gray-800">@yield("pageTitle")</h1>
+    <div class="w-full h-screen">
+            <div class="flex flex-no-wrap">
+                 @include("admin.includes.sidebar")
+                <main class="w-full">
+                    <header>
+                        @include("admin.includes.nav")
+                    </header>
+                    <div class="container mx-auto py-10 h-64 px-6">
+                        <div class="w-full h-full rounded border-dashed border-2 border-gray-300">
+                            @yield("content")
+                        </div>
                     </div>
-                </div>
-
-                <!-- Page Content -->
-                <div class="container mx-auto my-8">
-                    @yield("content")
-                </div>
-            </main>
-        </div>
-    </div>
+                </main>
+            </div>
+            <script>
+                var sideBar = document.getElementById("mobile-nav");
+                var DesktopsideBar = document.getElementById("Desktop_sidebar");
+                var openSidebar = document.getElementById("openSideBar");
+                var closeSidebar = document.getElementById("closeSideBar");
+                var hamburgerBtn1 = document.getElementById("hamburgerBtnOpen");
+                var hamburgerBtn2 = document.getElementById("hamburgerBtnclose");
+                sideBar.style.transform = "translateX(-260px)";
+                hamburgerBtn2.classList.add("hidden")
+                function sidebarHandler(flag) {
+                    if (flag) {
+                        sideBar.style.transform = "translateX(0px)";
+                        openSidebar.classList.add("hidden");
+                        closeSidebar.classList.remove("hidden");
+                    } else {
+                        sideBar.style.transform = "translateX(-260px)";
+                        closeSidebar.classList.add("hidden");
+                        openSidebar.classList.remove("hidden");
+                    }
+                }
+                function collapseSidebar(flag){
+                    if (flag) {
+                        DesktopsideBar.classList.remove("sm:flex")
+                        hamburgerBtn1.classList.add("hidden")
+                        hamburgerBtn2.classList.remove("hidden")
+                    } else {
+                        DesktopsideBar.classList.add("sm:flex")
+                        hamburgerBtn1.classList.remove("hidden")
+                        hamburgerBtn2.classList.add("hidden")
+                    }
+                }
+            </script>
+      </div>
 
     <!-- Scripts -->
     @stack('scripts')

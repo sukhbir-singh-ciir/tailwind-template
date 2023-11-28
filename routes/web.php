@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,18 @@ Route::get('/blogs', function () {
     return view('blog');
 });
 
-Route::group(["prefix"=>"admin"],function(){
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    });
+Route::group(["prefix" => "admin"], function () {
+    Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
+    Route::get('/products', 'AdminController@products')->name('admin.products');
+    Route::get('/pages', 'AdminController@pages')->name('admin.pages');
+    Route::get('/pages/create', 'AdminController@createPage')->name('admin.pages.create');
+    Route::get('/pages/edit/{id}', 'AdminController@editPage')->name('admin.pages.edit');
+    Route::get('/blog', 'AdminController@blogs')->name('admin.blogs');
+    Route::get('/blog/create', 'AdminController@createBlog')->name('admin.blogs.create');
+    Route::get('/blog/edit/{id}', 'AdminController@editBlog')->name('admin.blogs.edit');
+    Route::get('/settings', 'AdminController@settings')->name('admin.settings');
+    Route::get('/users', 'AdminController@users')->name('admin.users');
+    Route::get('/users/create', 'AdminController@createUser')->name('admin.users.create');
+    Route::get('/users/edit/{id}', 'AdminController@editUser')->name('admin.users.edit');
 });
 
