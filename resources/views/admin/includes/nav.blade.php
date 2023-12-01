@@ -13,7 +13,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
-            <span class="text-white ml-2 text-lg font-semibold">Admin Panel</span>
+            <span class="text-white ml-2 text-lg font-semibold">@yield('pageTitle')</span>
         </div>
 
         <!-- Right side - Profile image -->
